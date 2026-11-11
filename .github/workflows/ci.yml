@@ -1,0 +1,18 @@
+name: Demo Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write build artifact
+        run: |
+          echo "CI smoke test build artifact" > demo-build.txt
+          cat demo-build.txt
+      - name: Upload demo-build
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-build
+          path: demo-build.txt
